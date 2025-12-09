@@ -82,3 +82,17 @@
     background: rgba(255, 255, 255, 0.3);
     border-radius: 3px;
 }
+
+@media (max-width: 600px) {
+    .search-overlay {
+        width: calc(100% - 40px);
+        left: 20px;
+        top: 10px;
+        padding: 15px;
+    }
+
+    .search-input {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
