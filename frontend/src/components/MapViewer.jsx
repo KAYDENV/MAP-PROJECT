@@ -3,7 +3,7 @@ import { Viewer, Entity, EntityDescription } from 'resium';
 import { Cartesian3, createWorldTerrainAsync, Ion, Terrain } from 'cesium';
 
 // NOTE: For full terrain features, a Cesium Ion token is recommended.
-Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI4MDQwZmMzNC04NzM0LTRmNjgtYTcyNC1kYWY5YjUxZmUzMmEiLCJpZCI6MzY4MTE3LCJpYXQiOjE3NjUzMDIxODd9.p3XpcnwJ2CTqqcCx6gV7lwMa-UmJIzCOmbIDi-G95Bs';
+Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_TOKEN || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI4MDQwZmMzNC04NzM0LTRmNjgtYTcyNC1kYWY5YjUxZmUzMmEiLCJpZCI6MzY4MTE3LCJpYXQiOjE3NjUzMDIxODd9.p3XpcnwJ2CTqqcCx6gV7lwMa-UmJIzCOmbIDi-G95Bs';
 
 const MapViewer = ({ selectedLocation }) => {
     const viewerRef = useRef(null);
