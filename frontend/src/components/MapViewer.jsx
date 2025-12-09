@@ -40,14 +40,6 @@ const MapViewer = ({ selectedLocation }) => {
             full
             ref={viewerRef}
             terrainProvider={terrainProvider}
-            timeline={false}
-            animation={false}
-            baseLayerPicker={false}
-            sceneModePicker={false}
-            navigationHelpButton={false}
-            homeButton={false}
-            geocoder={false}
-            selectionIndicator={false}
             scene={{
                 globe: {
                     enableLighting: true, // Enable lighting to see terrain

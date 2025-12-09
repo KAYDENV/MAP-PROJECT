@@ -26,31 +26,49 @@ const SearchOverlay = ({ onSelectLocation }) => {
         setResults([]);
     };
 
+    const [isCollapsed, setIsCollapsed] = useState(window.innerWidth <= 600); // Default collapsed on mobile
+
+    const toggleCollapse = () => {
+        setIsCollapsed(!isCollapsed);
+    };
+
     return (
-        <div className="search-overlay">
-            <h2>Explore India</h2>
-            <input
-                type="text"
-                className="search-input"
-                placeholder="Search for a state or city..."
-                value={query}
-                onChange={handleSearch}
-            />
-            {results.length > 0 && (
-                <ul className="results-list">
-                    {results.map((location) => (
-                        <li
-                            key={location.name + location.type}
-                            className="result-item"
-                            onClick={() => handleSelect(location)}
-                        >
-                            <span style={{ fontWeight: 'bold' }}>{location.name}</span>
-                            <span style={{ fontSize: '0.8em', marginLeft: '10px', opacity: 0.7 }}>
-                                ({location.type})
-                            </span>
-                        </li>
-                    ))}
-                </ul>
+        <div className={`search-overlay ${isCollapsed ? 'collapsed' : ''}`}>
+            {isCollapsed ? (
+                <button className="search-toggle-btn" onClick={toggleCollapse}>
+                    🔍
+                </button>
+            ) : (
+                <>
+                    <div className="search-header">
+                        <h2>Explore India</h2>
+                        <button className="close-btn" onClick={toggleCollapse}>×</button>
+                    </div>
+                    <input
+                        type="text"
+                        className="search-input"
+                        placeholder="Search for a state or city..."
+                        value={query}
+                        onChange={handleSearch}
+                        autoFocus
+                    />
+                    {results.length > 0 && (
+                        <ul className="results-list">
+                            {results.map((location) => (
+                                <li
+                                    key={location.name + location.type}
+                                    className="result-item"
+                                    onClick={() => handleSelect(location)}
+                                >
+                                    <span style={{ fontWeight: 'bold' }}>{location.name}</span>
+                                    <span style={{ fontSize: '0.8em', marginLeft: '10px', opacity: 0.7 }}>
+                                        ({location.type})
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </>
             )}
         </div>
     );
